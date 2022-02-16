@@ -414,7 +414,7 @@ textarea.input {
   gap: 0 0.5rem;
 }
 .header-navigation__link_button._active .header-navigation__text {
-  color: #DA0E17;
+  color: #da0e17;
 }
 .header-navigation__link_button._active .header-navigation__icon {
   transform: rotate(-180deg);
@@ -684,6 +684,12 @@ textarea.input {
   }
 }
 
+@media (max-width: 47.99875em) {
+  .item-pod-menu-authors {
+    margin-bottom: 0.9375rem;
+    border-bottom: 0.0625rem solid #a8abb9;
+  }
+}
 .item-pod-menu-authors__title {
   font-weight: 600;
   font-size: 0.875rem;
@@ -725,7 +731,7 @@ textarea.input {
 }
 
 @media (max-width: 47.99875em) {
-  .item-pod-menu-articles {
+  .item-pod-menu-articles:not(:last-child) {
     margin-bottom: 0.9375rem;
     border-bottom: 0.0625rem solid #a8abb9;
   }
@@ -1458,6 +1464,7 @@ textarea.input {
 .spollers-content-page__clear {
   position: absolute;
   right: 0;
+  cursor: pointer;
   top: 0.1875rem;
 }
 @media (min-width: 69.375em) {
@@ -1479,6 +1486,13 @@ textarea.input {
   .spollers-content-page__clear {
     top: 0.78125rem;
   }
+}
+.spollers-content-page__clear input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 }
 .spollers-content-page__clear span {
   font-size: 1rem;
@@ -1533,13 +1547,50 @@ textarea.input {
   }
 }
 
+.tabs-filter__item > span::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transition: 0.3s;
+  background-color: #fff;
+  left: 0;
+}
+
+._active-check span._background::before {
+  background-color: #da0e17;
+}
+
+.dark-tabs span._background::before {
+  background-color: rgba(0, 0, 0, 0.486);
+}
+
+._active-check ._input-text {
+  color: #fff;
+}
+
+._input-text {
+  color: #a8abb9;
+  transition: 0.3s;
+  z-index: 2;
+  position: relative;
+}
+
 .tabs-filter {
   padding: 1.25rem 0 0 0;
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
   gap: 0.875rem;
 }
 .tabs-filter__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
   transition: 0.3s;
   border: 0.0625rem solid #a8abb9;
   padding: 0.40625rem 1.46875rem;
@@ -1549,9 +1600,12 @@ textarea.input {
   background-color: #fff;
   text-align: center;
 }
-.tabs-filter__item._active {
-  background: #da0e17;
-  color: #fff;
+.tabs-filter__item input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 61.99875em) {
@@ -1577,30 +1631,48 @@ textarea.input {
     grid-template-columns: 1fr;
   }
 }
+.main-content-filter__label > input:checked + span {
+  color: #2d3039;
+}
+@media (any-hover: hover) {
+  .main-content-filter__label > input:checked + span:hover {
+    text-decoration: none;
+    cursor: auto;
+  }
+}
+
 .main-content-filter__list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
 }
-.main-content-filter__link {
+.main-content-filter__label {
+  cursor: pointer;
   font-size: 1rem;
   line-height: 1.1875;
+}
+.main-content-filter__label input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.main-content-filter__label span {
   color: #0278ff;
 }
 @media (max-width: 47.99875em) {
-  .main-content-filter__link {
+  .main-content-filter__label span {
     font-size: 0.9375rem;
   }
 }
-.main-content-filter__link._active {
+.main-content-filter__label span._active {
   color: #2d3039;
 }
 @media (any-hover: hover) {
-  .main-content-filter__link:hover {
+  .main-content-filter__label span:hover {
     text-decoration: underline;
   }
-  .main-content-filter__link:hover._active {
+  .main-content-filter__label span:hover._active {
     text-decoration: none;
   }
 }
@@ -2464,4 +2536,33 @@ textarea.input {
 }
 .author__position:not(:last-child) {
   padding: 0 0 0.3125rem 0;
+}
+
+.top__content_headings {
+  padding: 0 0 1.5625rem 0;
+}
+@media (min-width: 72.5em) {
+  .top__content_headings .spollers-content-page__radio.main-content-filter {
+    margin-top: 2.5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 72.5em) {
+  .top__content_headings .spollers-content-page__radio.main-content-filter {
+    margin-top: clamp( 1.875rem , 1.6369047619rem  +  1.1904761905vw , 2.5rem );
+  }
+}
+@media (max-width: 20em) {
+  .top__content_headings .spollers-content-page__radio.main-content-filter {
+    margin-top: 1.875rem;
+  }
+}
+
+.page__row_headings {
+  padding: 0;
+}
+.page__row_headings .content-page__main.main-content {
+  padding: 0;
+}
+.page__row_headings .main-content__content {
+  padding: 0;
 }
